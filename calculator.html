@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    /* Your CSS styling here */
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <input type="text" id="display" disabled>
+    <br>
+    <button onclick="appendToDisplay('ANS')">ANS</button>
+    <button onclick="appendToDisplay('+')">+</button>
+    <!-- Other buttons... -->
+    <br>
+    <!-- Other rows of buttons... -->
+  </div>
+
+  <script>
+    var previousAnswer = null;
+
+    function appendToDisplay(value) {
+      if (value === 'ANS') {
+        if (previousAnswer !== null) {
+          document.getElementById('display').value += previousAnswer;
+        }
+      } else {
+        document.getElementById('display').value += value;
+      }
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      var displayValue = document.getElementById('display').value;
+      var result = eval(displayValue);
+      document.getElementById('display').value = result;
+      previousAnswer = result;
+    }
+  </script>
+</body>
+</html>
